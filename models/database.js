@@ -73,6 +73,13 @@ const db = new sqlite3.Database("./database.sqlite", (err) => {
           FOREIGN KEY(user_id) REFERENCES users(id)
         )
       `);
+      db.run(`
+        CREATE TABLE IF NOT EXISTS expired_tokens (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          token TEXT NOT NULL,
+          expired_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+        `);
     });
   }
 });

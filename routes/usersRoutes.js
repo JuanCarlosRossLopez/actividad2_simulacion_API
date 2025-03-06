@@ -99,4 +99,39 @@ router.post("/logout", usersController.logoutUser);
 // Posible ataque: IDOR (Insecure Direct Object Reference)
 router.get("/user/:id", usersController.getUserById);
 
+/**
+ * @swagger
+ * /users/expired-tokens:
+ *   get:
+ *     summary: Obtener todos los tokens expirados
+ *     tags: [Users]
+ *     responses:
+ *       200:
+ *         description: Lista de tokens expirados obtenida exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 tokens:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                         description: ID del token expirado
+ *                       token:
+ *                         type: string
+ *                         description: El token expirado
+ *                       expired_at:
+ *                         type: string
+ *                         format: date-time
+ *                         description: Fecha y hora en que el token fue invalidado
+ *       500:
+ *         description: Error al obtener los tokens expirados
+ */
+router.get("/expired-tokens", usersController.getExpiredTokens);
+
+
 module.exports = router;

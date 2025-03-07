@@ -102,3 +102,14 @@ exports.getExpiredTokens = (req, res) => {
     res.json({ tokens: rows });
   });
 };
+
+exports.getUsers = (req, res) => {
+  const query = `SELECT * FROM users`;
+
+  db.all(query, (err, rows) => {
+    if (err) {
+      return res.status(500).json({ error: "Error al obtener usuarios", details: err.message });
+    }
+    res.json({ users: rows });
+  });
+}

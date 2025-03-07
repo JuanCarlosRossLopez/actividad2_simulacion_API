@@ -110,7 +110,7 @@ router.get('/xss', attackController.getAllComments);
 
 /**
  * @swagger
- * /attack/xss:
+ * /attack/xss-add:
  *   post:
  *     summary: Agrega un comentario para simular un ataque XSS
  *     tags: [Attack Simulations]
@@ -140,7 +140,7 @@ router.get('/xss', attackController.getAllComments);
  *                 details:
  *                   type: object
  */
-router.post('/xss', attackController.addComment);
+router.post('/xss-add', attackController.addComment);
 
 
 

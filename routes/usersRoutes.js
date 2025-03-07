@@ -133,5 +133,34 @@ router.get("/user/:id", usersController.getUserById);
  */
 router.get("/expired-tokens", usersController.getExpiredTokens);
 
+/**
+ * @swagger
+ * /users/getUsers:
+ *   get:
+ *     summary: Obtener todos los usuarios
+ *     tags: [Users]
+ *     responses:
+ *       200:
+ *         description: Lista de usuarios
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: integer
+ *                   level:
+ *                     type: string
+ *                   message:
+ *                     type: string
+ *                   details:
+ *                     type: string
+ *                   timestamp:
+ *                     type: string
+ *                     format: date-time
+ */
+router.get("/getUsers", usersController.getUsers);
 
 module.exports = router;
